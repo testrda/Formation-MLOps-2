@@ -11,7 +11,9 @@ training_data_path = test_data_path + 'sub_eolienne_data.csv'
 features_path = test_data_path + 'prepared_features.parquet'
 model_registry_folder = test_data_path
 
-
+## given : pour changer les quelques valeurs qu'on veut par rapport au setup, qui est au dessus
+## la string qu'on lui passe (ici 'training data is available') sera la chaîne qu'on retrouvera dans le training_workflow.feature, pour qu'un métier puisse lancer depuis le fichier feature uniquement
+## le DS n'aura qu'à créer le training.workflow.py et la manière de parler qu'on en attend
 @given('training data is available')
 def step_impl_given(context):
     assert len(os.listdir(test_data_path)) == 1

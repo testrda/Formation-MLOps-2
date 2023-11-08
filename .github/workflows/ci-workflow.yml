@@ -24,7 +24,7 @@ jobs:
       - name: Run Vulture
         run:  |
                echo "## vulture !"
-               python -m vulture --verbose formation_indus_ds_avancee
+               python -m vulture formation_indus_ds_avancee
       - name: Run tests
         run:  |
               echo "## tests !"

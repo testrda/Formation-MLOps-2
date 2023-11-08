@@ -11,7 +11,7 @@ training_data_path = test_data_path + 'sub_eolienne_data.csv'
 features_path = test_data_path + 'prepared_features.parquet'
 model_registry_folder = test_data_path
 
-## given : pour changer les quelques valeurs qu'on veut par rapport au setup, qui est au dessus
+## given : pour changer les quelques valeurs qu'on veut par rapport au setup, qui est au dessus, ou les vérifier
 ## la string qu'on lui passe (ici 'training data is available') sera la chaîne qu'on retrouvera dans le training_workflow.feature, pour qu'un métier puisse lancer depuis le fichier feature uniquement
 ## le DS n'aura qu'à créer le training.workflow.py et la manière de parler qu'on en attend
 @given('training data is available')
@@ -21,7 +21,7 @@ def step_impl_given(context):
 
 
 @when('I launch the training')
-@patch('mlflow.sklearn.log_model')
+@patch('mlflow.sklearn.log_model') ## patch permet d'injecter une autre fonction à la place de celle qui doit normalement être utilisée
 def step_impl_when(context, mlflow_mock):
     prepare_features_with_io(training_data_path, features_path)
     train_model_with_io(features_path, model_registry_folder)

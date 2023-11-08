@@ -22,11 +22,11 @@ jobs:
       - name: Run Linter
         run:  |
               echo "## flake8 !"
-              flake8 --verbose formation_indus_ds_avancee
+              /opt/conda/envs/python_indus_avancee/bin/flake8 --verbose formation_indus_ds_avancee
       - name: Run Vulture
         run:  |
                echo "## vulture !"
-               vulture --verbose formation_indus_ds_avancee
+               /opt/conda/envs/python_indus_avancee/bin/vulture --verbose formation_indus_ds_avancee
       - name: Run tests
         run:  |
               echo "## tests !"

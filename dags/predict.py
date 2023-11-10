@@ -41,5 +41,4 @@ def predict():
     predict_with_io_task(feature_path=feature_path)
     monitor_task()
 
-
 predict_dag = predict()

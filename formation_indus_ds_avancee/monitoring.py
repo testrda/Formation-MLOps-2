@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 
 
 def monitor_with_io(predictions_folder: str, db_con_str: str, monitoring_table_name: str) -> None:
+    #import pdb;pdb.set_trace()
     latest_predictions_path = os.path.join(predictions_folder, 'latest.csv')
     latest_predictions = pd.read_csv(latest_predictions_path,
                                      usecols=['predictions_time', 'predictions'],
@@ -20,7 +21,5 @@ def monitor_with_io(predictions_folder: str, db_con_str: str, monitoring_table_n
 
 
 def monitor(latest_predictions: pd.DataFrame) -> pd.DataFrame:
-    # Start filling function
-    monitoring_df = pd.DataFrame
-    # End filling function
+    monitoring_df = latest_predictions.groupby("predictions_time").mean("predictions").reset_index()
     return monitoring_df
